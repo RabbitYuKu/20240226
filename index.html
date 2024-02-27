@@ -18,12 +18,24 @@
     </nav>
     <main>
       <h1>Home page</h1>
-      <form method="get" action="https://script.google.com/macros/s/AKfycbxulen6MI9yEZWs_brMotp3qVr6-3JMdgwyWQemmLHgG-Tp8xqWSu_aWy7VANvGxs5o/exec">
+      <form id="formId" method="get" action="https://script.google.com/macros/s/AKfycbytMeYQO80HvUMl_cVumT4M1gNtmVYVTAGGrwQQUvS2q9VUpF_Nm4eSF69kgu3phmzE/exec">
         text: <input type="text" name="a" id="textId"><br>
         pwd: <input type="password" name="b" id="passwordId"><br>
         <input type="submit">
     </main>
     <script>
-    document.getElementByID("formID").value
+    document.getElementById("formId").addEventListener("submit", async e =>{
+      e.preventDefault()
+
+      const text = document.getElementById("textId").value 
+      const password = document.getElementById("passwordId").value 
+      document.getElementById("formId").innerText = "Loading..."
+
+      const res = await fetch(`https://script.google.com/macros/s/AKfycbytMeYQO80HvUMl_cVumT4M1gNtmVYVTAGGrwQQUvS2q9VUpF_Nm4eSF69kgu3phmzE/exec`
+        +`?a=${text}&b=${password}`)
+      const resText = await res.text()
+      document.getElementById("formId").innerText = resText
+    })
+    </script>
   </body>
 </html>
