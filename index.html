@@ -22,6 +22,8 @@
         text: <input type="text" name="a" id="textId"><br>
         pwd: <input type="password" name="b" id="passwordId"><br>
         <input type="submit">
+      </form>
+      <span id="loader" class="loader hidden"></span>
     </main>
     <script>
     document.getElementById("formId").addEventListener("submit", async e =>{
@@ -29,12 +31,14 @@
 
       const text = document.getElementById("textId").value 
       const password = document.getElementById("passwordId").value 
-      document.getElementById("formId").innerText = "Loading..."
+      document.getElementById("formId").innerText = ""
+      document.getElementById('loader').classList.toggle("hidden")
 
       const res = await fetch(`https://script.google.com/macros/s/AKfycbytMeYQO80HvUMl_cVumT4M1gNtmVYVTAGGrwQQUvS2q9VUpF_Nm4eSF69kgu3phmzE/exec`
         +`?a=${text}&b=${password}`)
       const resText = await res.text()
       document.getElementById("formId").innerText = resText
+      document.getElementById('loader').classList.toggle("hidden")
     })
     </script>
   </body>
