@@ -18,9 +18,9 @@
     </nav>
     <main>
       <h1>Home page</h1>
-      <form id="formId" method="get" action="https://script.google.com/macros/s/AKfycbytMeYQO80HvUMl_cVumT4M1gNtmVYVTAGGrwQQUvS2q9VUpF_Nm4eSF69kgu3phmzE/exec">
-        text: <input type="text" name="a" id="textId"><br>
-        pwd: <input type="password" name="b" id="passwordId"><br>
+      <form id="formId" method="get" action="https://script.google.com/macros/s/AKfycbw3hP350naYCFYQb2CasTKf4oeEO0LeeJ01M7zgMKthhrmtFMY7Z2SrpRMMXfbSMxFG/exec">
+        email: <input type="email" name="a" id="textId" required><br><span></span>
+        pwd: <input type="password" name="b" id="passwordId" required><br><span></span>
         <input type="submit">
       </form>
       <span id="loader" class="loader hidden"></span>
@@ -34,7 +34,7 @@
       document.getElementById("formId").innerText = ""
       document.getElementById('loader').classList.toggle("hidden")
 
-      const res = await fetch(`https://script.google.com/macros/s/AKfycbytMeYQO80HvUMl_cVumT4M1gNtmVYVTAGGrwQQUvS2q9VUpF_Nm4eSF69kgu3phmzE/exec`
+      const res = await fetch(`https://script.google.com/macros/s/AKfycbw3hP350naYCFYQb2CasTKf4oeEO0LeeJ01M7zgMKthhrmtFMY7Z2SrpRMMXfbSMxFG/exec`
         +`?a=${text}&b=${password}`)
       const resText = await res.text()
       document.getElementById("formId").innerText = resText
