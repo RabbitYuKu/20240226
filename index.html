@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home</title>
+    <title>Sign in</title>
+    <link rel="icon" href="https://i.imgur.com/uJgqnDJ.png" type="image/x-icon" />
     <meta charset="UTF-8" />
+    
     <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
     <link rel="stylesheet" href="styles.css" />
     <script type="module" src="script.js"></script>
   </head>
   <body>
     <main>
       
-       <form id="formId" method="get" action="https://script.google.com/macros/s/AKfycbw3hP350naYCFYQb2CasTKf4oeEO0LeeJ01M7zgMKthhrmtFMY7Z2SrpRMMXfbSMxFG/exec">
-        <h1>Sign in</h1>
+      <form id="formId" method="get" action="https://script.google.com/macros/s/AKfycbxtlx7G2v3Z9NfFKPD5nylJBkFMrL4q1vuxXqZnikjFizS9_46ePjA52Yq14MZvnqfq/exec">
+        
         <div class="login-container">
-          <input type="email" name="userID" id="textId" placeholder="username" required><br><span></span>
+          <h1>Sign in</h1>
+          <input type="email" name="userID" id="textId" placeholder="email" required><br><span></span>
           <input type="password" name="pwd" id="passwordId" placeholder="password" required><br><span></span>
-          <input type="submit"  value="Continue" >
-        </form>
-      </div>
+          <input type="submit"  value="Next" > 
+          <a href="/register.html" style="color: cadetblue;">Register</a>
+        </div>
+      </form>
+
     <span id="loader" class="loader hidden"></span>
     </main>
+
     <script>
     document.getElementById("formId").addEventListener("submit", async e =>{
       e.preventDefault()
@@ -33,11 +35,27 @@
       document.getElementById("formId").innerText = ""
       document.getElementById('loader').classList.toggle("hidden")
       
-      const res = await fetch(`https://script.google.com/macros/s/AKfycbw3hP350naYCFYQb2CasTKf4oeEO0LeeJ01M7zgMKthhrmtFMY7Z2SrpRMMXfbSMxFG/exec`
+      const res = await fetch(`https://script.google.com/macros/s/AKfycbxtlx7G2v3Z9NfFKPD5nylJBkFMrL4q1vuxXqZnikjFizS9_46ePjA52Yq14MZvnqfq/exec`
         +`?userID=${text}&pwd=${password}`)
       const resText = await res.text()
-      document.getElementById("formId").innerText = resText
-      document.getElementById('loader').classList.toggle("hidden")
+      //document.getElementById("formId").innerText = resText
+      if (resText == "true") {
+          document.getElementById("formId").innerText = "Welcome!"
+          document.getElementById('loader').classList.toggle("hidden") 
+          //need to add delay
+          setTimeout(() => {
+            window.location.href = "/main.html"
+          }, 3000);
+          
+      } else  {
+          document.getElementById("formId").innerText = "Wrong username of password!" 
+          document.getElementById('loader').classList.toggle("hidden") 
+          //need to add delay
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+          
+      } 
     })
     </script>
   </body>
