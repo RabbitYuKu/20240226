@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2C2E40;
+    display: flex;
+    justify-content: left;
+    height: 100vh;
+    margin: 0;
+  }
+  
+.separator {
+    height: 2px; /* 線的高度 */
+    background-color: whitesmoke; /* 線的顏色 */
+    margin: 10px 0; /* 上下邊距 */
+    width: 100%; /* 寬度100% */
+    top: 50px;
+  }
+
+.menu {
+    position: relative;
+    display: inline-block;
+}
+.menu-button {
+    color: white; /* 字體顏色 */
+    padding: 18px 18px; /* 內邊距 */
+    border: none; /* 去掉邊框 */
+    cursor: pointer; /* 鼠標樣式 */
+    font-size: 16px; /* 字體大小 */
+    align-self: flex-start;
+}
+.dropdown {
+    position: fixed; /* 固定定位 */
+    background-color: #2C2E40; /* 下拉菜單背景 */
+    min-width: 200px; /* 最小寬度 */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* 陰影效果 */
+    z-index: 2; /* 在其他元素上面顯示 */
+    left: -200px; /* 初始位置在左側 */
+    top: 56px; /* 距離頁面頂部50px */
+    transition: left 0.3s ease; /* 設置動畫效果 */
+}
+.dropdown.show {
+    left: 0; /* 顯示時的位置 */
+}
+.overlay {
+    position: fixed; /* 固定定位 */
+    top: 0; /* 距離頂部 */
+    left: 0; /* 距離左側 */
+    width: 100%; /* 寬度100% */
+    height: 100%; /* 高度100% */
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色 */
+    display: none; /* 初始隱藏 */
+    z-index: 1; /* 在菜單下方 */
+}
+.overlay.show {
+    display: block; /* 顯示覆蓋層 */
+}
+.dropdown a {
+    color: white; /* 文字顏色 */
+    padding: 12px 16px; /* 內邊距 */
+    text-decoration: none; /* 去掉下劃線 */
+    display: block; /* 使鏈接佔據整行 */
+}
+.dropdown a:hover {
+    background-color: #373a52; /* 懸停時背景顏色 */
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Self Learning Platform</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!--
+      Need a visual blank slate?
+      Remove all code in `styles.css`!
+    -->
+    <link rel="stylesheet" href="todoCSS.css" />
+    <script type="module" src="script.js"></script>
+  </head>
+  <body>
+    <div class="menu">
+      <button class="menu-button" onclick="toggleDropdown()">Menu</button>
+
+      <div class="dropdown" id="myDropdown">
+          <a href="#link1">Start Working</a>
+          <a href="/todoList.html">To-do List</a>
+          <a href="#link3">Test2</a>
+      </div>      
+
+  </div>
+
+  <div class="overlay" id="myOverlay" onclick="closeDropdown()"></div>
+  <div class="separator"></div> <!-- 全寬分隔線 -->
+
+  <script>
+    function toggleDropdown() {
+        const dropdown = document.getElementById("myDropdown");
+        const overlay = document.getElementById("myOverlay");
+        dropdown.classList.toggle("show");
+        overlay.classList.toggle("show");
+    }
+
+    function closeDropdown() {
+        const dropdown = document.getElementById("myDropdown");
+        const overlay = document.getElementById("myOverlay");
+        dropdown.classList.remove("show");
+        overlay.classList.remove("show");
+    }
+
+    // 關閉下拉菜單的功能，當用戶點擊其他地方時
+    window.onclick = function(event) {
+        if (!event.target.matches('.menu-button')) {
+            closeDropdown();
+        }
+    }
+  </script>
+    </body>
