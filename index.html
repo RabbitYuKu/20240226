@@ -38,11 +38,10 @@
       const res = await fetch(`https://script.google.com/macros/s/AKfycbxtlx7G2v3Z9NfFKPD5nylJBkFMrL4q1vuxXqZnikjFizS9_46ePjA52Yq14MZvnqfq/exec`
         +`?userID=${text}&pwd=${password}`)
       const resText = await res.text()
-      //document.getElementById("formId").innerText = resText
+
       if (resText == "true") {
           document.getElementById("formId").innerText = "Welcome!"
           document.getElementById('loader').classList.toggle("hidden") 
-          //need to add delay
           setTimeout(() => {
             window.location.href = "/todoList.html"
           }, 3000);
@@ -50,7 +49,6 @@
       } else  {
           document.getElementById("formId").innerText = "Wrong username of password!" 
           document.getElementById('loader').classList.toggle("hidden") 
-          //need to add delay
           setTimeout(() => {
             window.location.reload();
           }, 3000);
