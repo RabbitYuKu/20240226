@@ -22,14 +22,20 @@
     <div class="overlay" id="myOverlay" onclick="closeDropdown()"></div>
     <div class="separator"></div> <!--分隔線-->
     <div class="inputBox" id="inputBox">
-        <input type="text" class="inputTitle" placeholder="Add title"><br><span></span>
-        <input type="text" class="inputDes" placeholder="Add description"><br><span></span>
-        <button class="inputButton">Submit</button>
+        <input type="text" id="titleID" class="inputTitle" placeholder="Add title" required><br><span></span>
+        <input type="text" id="descriptionID" class="inputDes" placeholder="Add description" required><br><span></span>
+        <button class="inputButton" onclick="addTodo()">Submit</button>
     </div>
-
   </body>
 
   <script>
+    async function addTodo() {
+      const title = document.getElementById("titleId").value 
+      const description = document.getElementById("descriptionID").value        
+      const res = await fetch(`https://script.google.com/macros/s/AKfycbxtlx7G2v3Z9NfFKPD5nylJBkFMrL4q1vuxXqZnikjFizS9_46ePjA52Yq14MZvnqfq/exec`
+        +`?titleID=${title}&descriptionID=${description}`)
+    }
+
     function toggleDropdown() {
         const dropdown = document.getElementById("myDropdown");
         const overlay = document.getElementById("myOverlay");
