@@ -7,11 +7,13 @@ body {
     justify-content: center;
   }
   
-h1 {
+h1.menu {
     color:white;
     font-size: 25px;
-    position: fixed;
-    top:-19px;
+    position: absolute;
+    min-width: 150px;
+    left:60px;
+    top:-3px;
 }
 
 .separator {
@@ -23,9 +25,10 @@ h1 {
     position: fixed;
   }
 
-.menu {
-    position: relative;
+div.menu {
+    position: absolute;
     display: inline-block;
+    left:0;
 }
 .menu-button {
     color: white;
@@ -98,7 +101,7 @@ h1 {
 }
 .subtile-item {
     max-height: 100px;
-    padding: 15px;
+    padding: 10px;
     overflow-wrap: break-word;
     overflow-y: auto;
     font-size: 18px;
@@ -123,24 +126,28 @@ h1 {
 }
 
 .inputBox {
+    position: relative;
     top:100px;
-    position: fixed;
 }
 
-.inputTitle, .inputDes {
+.inputTitle, .inputDes, .inputDate {
     width: 400px;
     height: 30px;
     padding:15px;
     border: 2px solid #AEC7CF;
     border-radius: 3px;
     background-color: #2C2E40;
-    color: #898989;
+    color: #ffffff;
     font-size: 20px;
     margin:4px 0;
 }
 
 .inputDes {
     height: 150px;
+}
+
+.inputDate {
+    height: 30px;
 }
 
 .inputButton {

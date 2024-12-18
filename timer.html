@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Add Task</title>
+    <title>Timer</title>
     <link rel="icon" href="https://i.imgur.com/uJgqnDJ.png" type="image/x-icon" />
     <meta charset="UTF-8" />
     
@@ -17,30 +17,13 @@
             <a href="/todoList.html">To-do List</a>
             <a href="/timer.html">Timer</a>
         </div>      
-        <h1 class="menu">Add Task</h1>
+        <h1 class="menu">Timer</h1>
     </div>
     <div class="overlay" id="myOverlay" onclick="closeDropdown()"></div>
     <div class="separator"></div> <!--分隔線-->
-    <div class="inputBox" id="inputBox">
-        <input type="text" id="titleID" class="inputTitle" placeholder="Add title"><br><span></span>
-        <input type="text" id="descriptionID" class="inputDes" placeholder="Add description"><br><span></span>
-        <input type="date" id="dateID" class="inputDate"><br><span></span>
-        <button class="inputButton" onclick="addTask()">Submit</button>
-    </div>
-  </body>
 
-  <script>
-    async function addTask() {
-      const title = document.getElementById("titleID").value 
-      const description = document.getElementById("descriptionID").value  
-      const date = document.getElementById("dateID").value    
-      const userID = localStorage.getItem("userID")
-      const res = await fetch(`https://script.google.com/macros/s/AKfycbxtlx7G2v3Z9NfFKPD5nylJBkFMrL4q1vuxXqZnikjFizS9_46ePjA52Yq14MZvnqfq/exec`
-        +`?action=${"addTodo"}&userID${userID}&titleID=${title}&descriptionID=${description}&dateID=${date}`)
-    }
-
-
-    function toggleDropdown() {
+    <script>
+            function toggleDropdown() {
         const dropdown = document.getElementById("myDropdown");
         const overlay = document.getElementById("myOverlay");
         dropdown.classList.toggle("show");
@@ -53,4 +36,4 @@
         dropdown.classList.remove("show");
         overlay.classList.remove("show");
     }
-</script>
+    </script>

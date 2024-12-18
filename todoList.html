@@ -16,9 +16,9 @@
       <input type="image" class="menu-button" onclick="toggleDropdown()" src="https://www.clipartmax.com/png/full/158-1587307_burger-menu-icon-white.png"/>
       <h1 class="menu">To-do List</h1>
       <div class="dropdown" id="myDropdown">
-          <a href="/addTodo.html">Start Working</a>
+          <a href="/addTodo.html">Add Task</a>
           <a href="/todoList.html">To-do List</a>
-          <a href="#link3">Test2</a>
+          <a href="/timer.html">Timer</a>
       </div>      
       
   </div>
@@ -28,17 +28,27 @@
   <div class="tile">
     <div class="tile-item" id="tile" onclick="toggleSubmenu(this)">tile1</div>
     <div class="subtile">
-        <div class="subtile-item" id="subtile"></div>
-        <input type="button" class="subtile-button" value="Start Working">
+        <div class="subtile-item" id="subtile">
+          <p>選項 1</p>
+        </div>
+        <input type="button" class="subtile-button" value="Start Working"><p></p>
     </div>
 </div>
 
   <input type="image" class="addButton" id="addButton" src="/add.png">
   <script>
+    const userID = localStorage.getItem("userID")
+    const task = fetch('https://script.google.com/macros/s/AKfycbxtlx7G2v3Z9NfFKPD5nylJBkFMrL4q1vuxXqZnikjFizS9_46ePjA52Yq14MZvnqfq/exec'
+    +`?action=${"todoList"}&userID=${userID}`)
+
     const button = document.getElementById("addButton") //add button listener
     button.addEventListener("click",function(){
       window.location.href= "/addTodo.html"
     })
+
+    function readTask() {
+
+    }
 
     function toggleDropdown() { //menu button
         const dropdown = document.getElementById("myDropdown");
