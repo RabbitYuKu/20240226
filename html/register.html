@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Register for Todo application">
+    <meta name="theme-color" content="#ffffff">
+    <title>Register | Todo App</title>
+    <link rel="icon" href="https://i.imgur.com/uJgqnDJ.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script type="module" src="../scripts/register.js"></script>
+</head>
+<body>
+    <main>
+        <form id="registerForm" class="register-form" novalidate>
+            <div class="login-container">
+                <h1>Register</h1>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" 
+                           id="email" 
+                           name="email" 
+                           required 
+                           autocomplete="email"
+                           placeholder="Enter your email">
+                    <span class="error-message" id="emailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" 
+                           id="password" 
+                           name="password" 
+                           required 
+                           autocomplete="new-password"
+                           placeholder="Enter your password">
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" 
+                           id="confirmPassword" 
+                           name="confirmPassword" 
+                           required 
+                           autocomplete="new-password"
+                           placeholder="Confirm your password">
+                    <span class="error-message" id="confirmPasswordError"></span>
+                </div>
+
+                <button type="submit" class="submit-button">
+                    <span class="button-text">Register</span>
+                    <span class="spinner hidden"></span>
+                </button>
+
+                <a href="/index.html" class="login-link">Sign in instead</a>
+            </div>
+        </form>
+        <div id="statusMessage" class="status-message hidden"></div>
+    </main>
+</body>
+</html>
