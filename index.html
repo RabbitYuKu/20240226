@@ -34,7 +34,7 @@
       const password = document.getElementById("passwordId").value  
       document.getElementById("formId").innerText = ""
       document.getElementById('loader').classList.toggle("hidden")
-      localStorage.setItem('userID',text);
+      localStorage.setItem("userId",text)
       const res = await fetch(`https://script.google.com/macros/s/AKfycbxtlx7G2v3Z9NfFKPD5nylJBkFMrL4q1vuxXqZnikjFizS9_46ePjA52Yq14MZvnqfq/exec`
         +`?action=${"login"}&userID=${text}&pwd=${password}`)
       const resText = await res.text()

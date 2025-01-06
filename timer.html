@@ -22,8 +22,17 @@
     <div class="overlay" id="myOverlay" onclick="closeDropdown()"></div>
     <div class="separator"></div> <!--分隔線-->
 
+    <div class="timer">
+      <div class="time" id="time">00:00:00</div>
+  </div>
+  
+  <div class="timertile" id="tilesContainer">
+    
+</div>
+
     <script>
-            function toggleDropdown() {
+    copyTile()
+    function toggleDropdown() {
         const dropdown = document.getElementById("myDropdown");
         const overlay = document.getElementById("myOverlay");
         dropdown.classList.toggle("show");
@@ -36,4 +45,67 @@
         dropdown.classList.remove("show");
         overlay.classList.remove("show");
     }
+
+
+    document.getElementById("startButton").addEventListener("click", countdown())
+
+    function countdown() {
+      let totalTime = 360; // 設定計時
+          let timePassed = 0;
+         const timeDisplay = document.getElementById('time');
+
+         function updateTimer() {
+              timePassed++;
+              const percentage = (timePassed / totalTime) * 100;
+              document.querySelector('.timer').style.background = `conic-gradient( #AEC7CF ${percentage}%, #44465e ${percentage}%)`;
+            
+             const hours = Math.floor(timePassed / 3600);
+             const minutes = Math.floor((timePassed % 3600) / 60);
+             const seconds = timePassed % 60;
+              timeDisplay.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            
+              if (timePassed >= totalTime) {
+                  clearInterval(timerInterval);
+              }
+          }
+        
+         const timerInterval = setInterval(updateTimer, 1000);
+      }
+
+    function copyTile() {
+      const task = localStorage.getItem("task")
+      const params = new URLSearchParams(task);
+      const title = params.get('titleID');
+      const description = params.get('descriptionID');
+      const tilesContainer = document.getElementById('tilesContainer');
+
+      const tileItem = document.createElement('div');
+      tileItem.className = 'timertile-item';
+      tileItem.onclick = function() { toggleSubmenu(tileItem); };
+      tileItem.textContent = title;
+
+      const subtile = document.createElement('div');
+      subtile.className = 'timersubtile';
+
+      const subtileItem = document.createElement('div');
+      subtileItem.className = 'timersubtile-item';
+      subtileItem.id = 'subtile';
+
+      const p = document.createElement('p');
+      p.textContent = description;
+
+      const startButton = document.createElement('input');
+      startButton.type = 'button';
+      startButton.className = 'subtile-button';
+      startButton.value = 'Start Working';
+      startButton.id = 'startButton'
+
+      subtileItem.appendChild(p);
+      subtile.appendChild(subtileItem);
+      subtile.appendChild(startButton);
+
+      tilesContainer.appendChild(tileItem);
+      tilesContainer.appendChild(subtile);
+    }
+    
     </script>

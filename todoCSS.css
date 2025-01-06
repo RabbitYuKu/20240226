@@ -164,3 +164,63 @@ div.menu {
 .inputButton:hover {
     background-color: #97b2b9;
   }
+
+  .timer {
+    position: fixed;
+    top:70px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(#AEC7CF 0%, #AEC7CF 0%, #44465e 0%, #44465e 100%);
+}
+.timer::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: #2C2E40;
+    transform: translate(-50%, -50%);
+}
+.time {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: thin;
+    color:white;
+}
+
+.timertile {
+    width: 400px;
+    border: 1px solid #AEC7CF;
+    overflow: hidden;
+    position: fixed;
+    top:300px;
+    color: white;
+}
+
+
+.timertile-item {
+    padding: 15px;
+    background-color: #2C2E40;
+    cursor: pointer;
+    border-bottom: 1px solid #AEC7CF;
+    font-size: 30px;
+}
+.timersubtile {
+    max-height: 400;
+    overflow: hidden; 
+    background-color: #2C2E40;
+}
+
+.timersubtile-item {
+    max-height: 100px;
+    padding: 10px;
+    overflow-wrap: break-word;
+    overflow-y: auto;
+    font-size: 18px;
+}

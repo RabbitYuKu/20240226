@@ -22,33 +22,40 @@
       </div>      
       
   </div>
+
   <div class="overlay" id="myOverlay" onclick="closeDropdown()"></div>
   <div class="separator"></div> <!--分隔線-->
 
-  <div class="tile">
-    <div class="tile-item" id="tile" onclick="toggleSubmenu(this)">tile1</div>
+  <div class="tile" id="tilesContainer">
+    <!--<div class="tile-item" id="tile" onclick="toggleSubmenu(this)">tile1</div>
     <div class="subtile">
         <div class="subtile-item" id="subtile">
           <p>選項 1</p>
         </div>
         <input type="button" class="subtile-button" value="Start Working"><p></p>
-    </div>
+    </div> -->
 </div>
+
+
 
   <input type="image" class="addButton" id="addButton" src="/add.png">
   <script>
     const userID = localStorage.getItem("userID")
-    const task = fetch('https://script.google.com/macros/s/AKfycbxtlx7G2v3Z9NfFKPD5nylJBkFMrL4q1vuxXqZnikjFizS9_46ePjA52Yq14MZvnqfq/exec'
-    +`?action=${"todoList"}&userID=${userID}`)
-
-    const button = document.getElementById("addButton") //add button listener
-    button.addEventListener("click",function(){
-      window.location.href= "/addTodo.html"
+    const task = []
+    copyTile()
+    const items = document.querySelectorAll('.subtile-button')
+    items.forEach(item => {
+      item.addEventListener('click', function() {
+        const itemId = this.getAttribute('id');
+        localStorage.setItem("task",task[itemId])
+        window.location.href= "/timer.html"
+    })
     })
 
-    function readTask() {
-
-    }
+    const button = document.getElementById("addButton")
+    button.addEventListener("click",function(){
+      window.location.href="/addtodo.html"
+    })
 
     function toggleDropdown() { //menu button
         const dropdown = document.getElementById("myDropdown");
@@ -75,5 +82,51 @@
         const submenu = menuItem.nextElementSibling;
         submenu.classList.toggle('open');
         }
+
+    function copyTile() {
+      task.push("action=addTodo&userID=123@gmail.com&titleID=task1&descriptionID=1234&dateID=2024-12-19","action=addTodo&userID=123@gmail.com&titleID=task114514&descriptionID=erertetet&dateID=2024-12-04")
+      //await fetch('https://script.google.com/macros/s/AKfycbxtlx7G2v3Z9NfFKPD5nylJBkFMrL4q1vuxXqZnikjFizS9_46ePjA52Yq14MZvnqfq/exec'
+      //+`?action=${"todoList"}&userID=${userID}`))
+
+      for (let i = 0 ; i < task.length;i ++) {
+
+      const params = new URLSearchParams(task[i]);
+      const title = params.get('titleID');
+      const description = params.get('descriptionID');
+      const tilesContainer = document.getElementById('tilesContainer');
+
+      const tileItem = document.createElement('div');
+      tileItem.className = 'tile-item';
+      tileItem.onclick = function() { toggleSubmenu(tileItem); };
+      tileItem.textContent = title;
+
+      const subtile = document.createElement('div');
+      subtile.className = 'subtile';
+
+      const subtileItem = document.createElement('div');
+      subtileItem.className = 'subtile-item';
+      subtileItem.id = 'subtile';
+
+      const p = document.createElement('p');
+      p.textContent = description;
+
+      const startButton = document.createElement('input');
+      startButton.type = 'button';
+      startButton.id = i;
+      startButton.className = 'subtile-button';
+      startButton.value = 'Start Working';
+
+      subtileItem.appendChild(p);
+      subtile.appendChild(subtileItem);
+      subtile.appendChild(startButton);
+
+      tilesContainer.appendChild(tileItem);
+      tilesContainer.appendChild(subtile);
+      }
+      console.log(task[0])
+      console.log(userID)
+    }
+
+
   </script>
     </body>
